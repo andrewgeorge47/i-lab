@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Lab - Mobile Engagement Studio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        :root {
+            --primary: #1d479b; /* Brand blue from original site */
+            --primary-dark: #153677;
+            --primary-light: #3a64b8;
+            --accent: #ff6b35; /* Vibrant orange accent */
+            --accent-hover: #e55a2b;
+            --neutral-dark: #333;
+            --neutral-medium: #666;
+            --neutral-light: #f5f6fa;
+            --white: #fff;
+            --gray-light: #f0f0f0;
+            --gray-medium: #ddd;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--neutral-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-hover);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-link {
+            margin-left: 2rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 8rem 0 5rem;
+            background-color: var(--neutral-light);
+            overflow: hidden;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--neutral-medium);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* What Is Section */
+        .what-is {
+            background-color: var(--white);
+        }
+
+        .what-is-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .what-is-content {
+            flex: 1;
+        }
+
+        .what-is-image {
+            flex: 1;
+        }
+
+        .what-is-image img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Who It's For Section */
+        .who-for {
+            background-color: var(--neutral-light);
+        }
+
+        .audience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .audience-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .audience-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .audience-title {
+            margin-bottom: 1rem;
+        }
+
+        /* Custom Activations Section */
+        .activations {
+            background-color: var(--white);
+        }
+
+        .activation-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .activation-example {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .activation-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+        }
+
+        .activation-example:hover .activation-image {
+            transform: scale(1.05);
+        }
+
+        .activation-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+        }
+
+        .activation-content h3 {
+            color: var(--white);
+        }
+
+        /* Partnership Options Section */
+        .partnership {
+            background-color: var(--neutral-light);
+        }
+
+        .partnership-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .partnership-option {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .partnership-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .partnership-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Impact Section */
+        .impact {
+            background-color: var(--white);
+        }
+
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            color: var(--neutral-medium);
+        }
+
+        .case-study {
+            background-color: var(--neutral-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+        }
+
+        /* Trust Logos */
+        .trust-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .trust-logo {
+            max-width: 150px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .trust-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .cta h2 {
+            color: var(--white);
+        }
+
+        .cta-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .cta-content {
+            flex: 1;
+        }
+
+        .cta-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(29, 71, 155, 0.2);
+        }
+
+        .form-select {
+            appearance: none;
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 0.75rem center/12px;
+            background-color: var(--white);
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-footer {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--neutral-dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-nav a {
+            color: var(--gray-medium);
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter Form */
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: var(--border-radius);
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--white);
+        }
+
+        .newsletter-btn {
+            padding: 0.75rem 1rem;
+            background-color: var(--white);
+            color: var(--neutral-dark);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-container, 
+            .what-is-container,
+            .cta-container {
+                flex-direction: column;
+            }
+            
+            .hero-image,
+            .what-is-image {
+                margin-top: 2rem;
+                max-width: 100%;
+            }
+            
+            .hero-content,
+            .what-is-content,
+            .cta-content,
+            .cta-form {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-link {
+                margin: 0.5rem 1rem;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 7rem 0 3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .trust-logos {
+                gap: 1.5rem;
+            }
+            
+            .trust-logo {
+                max-width: 100px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .impact-metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="innovation-lab-logo.png" alt="Innovation Lab Logo" />
+            </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#what-is" class="nav-link">About</a></li>
+                <li><a href="#who-for" class="nav-link">Partners</a></li>
+                <li><a href="#activations" class="nav-link">Experiences</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+                <li><a href="#cta" class="nav-link btn btn-accent">Book the Lab</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Not Just a Bus.<br>A Brand Experience on Wheels.</h1>
+                <p class="hero-description">Transform your science innovation into unforgettable activations that amplify your mission and create lasting connections.</p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn btn-accent">Build Your Activation</a>
+                    <a href="#what-is" class="btn btn-outline">See How It Works</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="hero-image.jpeg" alt="Innovation Lab Experience" />
+            </div>
+        </div>
+    </section>
+
+    <!-- What Is Section -->
+    <section class="section what-is" id="what-is">
+        <div class="container what-is-container">
+            <div class="what-is-content">
+                <h2>A Mobile Engagement Studio for Forward-Thinking Brands</h2>
+                <p>The Innovation Lab is a customizable platform designed to transform your scientific innovations into tangible experiences. Whether you're hosting a gala, launching a product, or connecting with future talent, we help you tell a story that sticks.</p>
+                <p>Our team works with you to create immersive, branded experiences that showcase your mission and technology in ways that resonate with your audiences.</p>
+                <a href="#cta" class="btn btn-primary">Partner With Us</a>
+            </div>
+            <div class="what-is-image">
+                <img src="lab-interior.jpeg" alt="Inside the Innovation Lab" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For Section -->
+    <section class="section who-for" id="who-for">
+        <div class="container">
+            <h2 class="section-title">Who It's For</h2>
+            <p class="section-description">The Innovation Lab creates strategic value for organizations that want to showcase their science and innovation in tangible, memorable ways.</p>
+            
+            <div class="audience-cards">
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3 class="audience-title">Biotech Companies</h3>
+                    <p>Showcase your science in action. Transform complex innovations into immersive experiences that build understanding and drive engagement.</p>
+                    <a href="#cta" class="btn btn-outline">Learn More</a>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="audience-title">Sponsors & Foundations</h3>
+                    <p>Turn your investment into an experience. Create memorable interactions that amplify your mission and demonstrate tangible impact.</p>
+                    <a href="#cta" class="btn btn-outline">Learn More</a>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="audience-title">Museums & Institutions</h3>
+                    <p>Extend your reach with a branded mobile lab that complements your programming and attracts new audiences.</p>
+                    <a href="#cta" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Activations Section -->
+    <section class="section activations" id="activations">
+        <div class="container">
+            <h2 class="section-title">The Science of [Your Brand]: Custom Experiences</h2>
+            <p class="section-description">Our signature offering transforms the Innovation Lab into an extension of your brand experience. We work with you to create custom scientific demonstrations that showcase your mission, products, and innovations.</p>
+            
+            <div class="activation-examples">
+                <div class="activation-example">
+                    <div class="activation-image" style="background-image: url('Biotech-showcase.jpeg');"></div>
+                    <div class="activation-content">
+                        <h3>Biotech Showcase</h3>
+                        <p>DNA extraction workshops featuring your proprietary technology.</p>
+                    </div>
+                </div>
+                
+                <div class="activation-example">
+                    <div class="activation-image" style="background-image: url('product-experience.jpeg');"></div>
+                    <div class="activation-content">
+                        <h3>Product Experience</h3>
+                        <p>Interactive demonstrations highlighting your innovation's unique properties.</p>
+                    </div>
+                </div>
+                
+                <div class="activation-example">
+                    <div class="activation-image" style="background-image: url('mission-activation.jpeg');"></div>
+                    <div class="activation-content">
+                        <h3>Mission Activation</h3>
+                        <p>Customized experiences that bring your organization's purpose to life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Options Section -->
+    <section class="section partnership" id="partnership">
+        <div class="container">
+            <h2 class="section-title">Flexible Engagement Options</h2>
+            <p class="section-description">Choose from a variety of ways to leverage the Innovation Lab for your organization's goals.</p>
+            
+            <div class="partnership-options">
+                <div class="partnership-option">
+                    <div class="partnership-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Auction Item</h3>
+                    <p>Offer a premium experience to your highest bidders – perfect for fundraising galas and charity events.</p>
+                </div>
+                
+                <div class="partnership-option">
+                    <div class="partnership-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Gala Activation</h3>
+                    <p>Create a memorable centerpiece that elevates your event and engages your most important stakeholders.</p>
+                </div>
+                
+                <div class="partnership-option">
+                    <div class="partnership-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Post-Event Lab Visit</h3>
+                    <p>Extend your impact by offering exclusive experiences to donors and key partners.</p>
+                </div>
+                
+                <div class="partnership-option">
+                    <div class="partnership-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Brand Experience Tour</h3>
+                    <p>Multi-city campaign bringing your innovation story to key markets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="section impact" id="impact">
+        <div class="container">
+            <h2 class="section-title">Strategic Storytelling with Measurable Impact</h2>
+            <p class="section-description">Trusted by leading biotech firms, foundations, and innovation brands.</p>
+            
+            <div class="trust-logos">
+                <img src="partner-logo-1.png" alt="Partner Logo" class="trust-logo">
+                <img src="partner-logo-2.png" alt="Partner Logo" class="trust-logo">
+                <img src="partner-logo-3.png" alt="Partner Logo" class="trust-logo">
+                <img src="partner-logo-4.png" alt="Partner Logo" class="trust-logo">
+            </div>
+            
+            <div class="impact-metrics">
+                <div class="metric">
+                    <div class="metric-number">5,000+</div>
+                    <div class="metric-label">Stakeholders Engaged</div>
+                </div>
+                
+                <div class="metric">
+                    <div class="metric-number">25+</div>
+                    <div class="metric-label">Brand Activations</div>
+                </div>
+                
+                <div class="metric">
+                    <div class="metric-number">92%</div>
+                    <div class="metric-label">Brand Recall Rate</div>
+                </div>
+                
+                <div class="metric">
+                    <div class="metric-number">4.8/5</div>
+                    <div class="metric-label">Partner Satisfaction</div>
+                </div>
+            </div>
+            
+            <div class="case-study">
+                <h3>Featured Partnership: GeneTech Solutions</h3>
+                <p>GeneTech partnered with the Innovation Lab to create an immersive DNA sequencing experience at their annual investor conference. The activation delivered:</p>
+                <div style="display: flex; gap: 2rem; align-items: center; margin-bottom: 1.5rem;">
+                    <div style="flex: 1;">
+                        <ul style="margin-bottom: 0; padding-left: 1.5rem;">
+                            <li>300+ high-value investor interactions</li>
+                            <li>85% of participants reported improved understanding of GeneTech's technology</li>
+                            <li>Featured in 3 industry publications, extending reach by 50,000+ impressions</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1;">
+                        <img src="case-study-image.jpeg" alt="GeneTech Case Study" style="width: 100%; border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+                    </div>
+                </div>
+                <p><em>"The Innovation Lab transformed our typical conference presence into a genuinely memorable experience that our investors and partners are still talking about months later."</em> - Sarah Johnson, CMO</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta" id="cta">
+        <div class="container cta-container">
+            <div class="cta-content">
+                <h2>Let's Build Something Unforgettable</h2>
+                <p>Tell us about your goals, and we'll create a custom activation concept for your review.</p>
+                <p>Our team of scientists and experience designers will collaborate with you to develop an engagement strategy that aligns with your mission and delivers measurable results.</p>
+            </div>
+            
+            <div class="cta-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="organization" class="form-label">Organization</label>
+                        <input type="text" id="organization" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone (Optional)</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest" class="form-label">Interest Area</label>
+                        <select id="interest" class="form-control form-select" required>
+                            <option value="" selected disabled>Please select...</option>
+                            <option value="biotech">Biotech Showcase</option>
+                            <option value="gala">Gala Activation</option>
+                            <option value="tour">Brand Experience Tour</option>
+                            <option value="auction">Auction Item</option>
+                            <option value="custom">Custom Partnership</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline" class="form-label">Desired Timeline</label>
+                        <select id="timeline" class="form-control form-select" required>
+                            <option value="" selected disabled>Please select...</option>
+                            <option value="1-3">1-3 months</option>
+                            <option value="3-6">3-6 months</option>
+                            <option value="6+">6+ months</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Tell us about your goals</label>
+                        <textarea id="message" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent form-btn">Submit Inquiry</button>
+                    
+                    <div class="form-footer">
+                        <a href="#" class="download-link">Download Partnership Overview</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="innovation-lab-logo.png" alt="Innovation Lab Logo">
+                    </div>
+                    <p>The Innovation Lab is a mobile engagement studio designed to transform scientific innovation into unforgettable brand experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#what-is">About</a></li>
+                        <li><a href="#who-for">Partners</a></li>
+                        <li><a href="#activations">Experiences</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-nav">
+                        <li><i class="fas fa-envelope"></i> hello@innovationlab.org</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Raleigh, NC</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for the latest updates on Innovation Lab activations and partnerships.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 The Innovation Lab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    if (!targetId) return; // Skip if empty href="#"
+                    
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Accounting for fixed header
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Simple form submission handling
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your inquiry! Our team will be in touch with you shortly.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
